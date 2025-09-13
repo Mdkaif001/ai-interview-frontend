@@ -14,8 +14,6 @@ import { submitFinalInterviewAPI } from "@/lib/api";
 import { downloadFeedbackPdf } from "@/lib/downloadAssessment";
 import Image from "next/image";
 import { ConfirmDialog } from "../ConfirmDialog";
-import Lottie from "lottie-react";
-import feedbackLoading from "@/public/assets/lottie/feedback-loading.json";
 import { Button } from "@/components/ui/button";
 
 function FinalAssessment() {
