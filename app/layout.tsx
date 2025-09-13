@@ -14,18 +14,12 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
-
-export const metadata: Metadata = {
-  title: "AI Interview Model",
-  description: "Development of AI Interview Model by Mohammad Kaif",
+export const metadata = {
   icons: {
-    apple: "/apple-touch-icon.png",
     icon: [
       { url: "/favicon_lgog.jpg", sizes: "32x32", type: "image/jpg" },
       { url: "/favicon_lgog.jpg", sizes: "16x16", type: "image/jpg" },
     ],
-    shortcut: "/favicon.ico",
-    other: [{ rel: "manifest", url: "/site.webmanifest" }],
   },
 };
 
