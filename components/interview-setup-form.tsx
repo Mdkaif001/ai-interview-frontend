@@ -92,7 +92,7 @@ export function InterviewSetupForm({
 
   useEffect(() => {
     resetStore();
-  }, []);
+  }, [resetStore]);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -202,7 +202,7 @@ export function InterviewSetupForm({
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [formData, steps, handleStartInterview]);
+  }, [formData, steps, handleStartInterview, isDomainSpecific]);
 
   useEffect(() => {
     const getAllDomains = async () => {

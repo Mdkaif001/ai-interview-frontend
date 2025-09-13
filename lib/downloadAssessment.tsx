@@ -12,25 +12,6 @@ export const downloadFeedbackPdf = async (
   const bottomMargin = 40;
   let yPos = margin;
 
-  const loadImageAsBase64 = (url: string): Promise<string> => {
-    return new Promise((resolve, reject) => {
-      const img = new Image();
-      img.setAttribute("crossOrigin", "anonymous");
-      img.onload = () => {
-        const canvas = document.createElement("canvas");
-        canvas.width = img.width;
-        canvas.height = img.height;
-        const ctx = canvas.getContext("2d");
-        if (!ctx) reject("Canvas context not available");
-        ctx?.drawImage(img, 0, 0);
-        const dataURL = canvas.toDataURL("image/png");
-        resolve(dataURL);
-      };
-      img.onerror = (err) => reject(err);
-      img.src = url;
-    });
-  };
-
 
   const colors = {
     primary: [59, 100, 246],
