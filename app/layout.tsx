@@ -14,7 +14,8 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
-export const metadata = {
+
+export const metadata: Metadata = {
   icons: {
     icon: [
       { url: "/favicon_lgog.jpg", sizes: "32x32", type: "image/jpg" },
