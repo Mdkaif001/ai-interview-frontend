@@ -279,9 +279,11 @@ export function InterviewSetupForm({
   if (steps !== 1 && steps !== 2 && steps !== 3) return null;
 
   return (
-    <div className="h-full w-full flex flex-col items-center justify-center gap-4 sm:gap-6 px-3 sm:px-0">
-      <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold">
-        <span className="text-[#3B64F6]">AI-Video</span> Interview Setup
+    <div className="h-full w-full z-20 flex flex-col items-center justify-center gap-4">
+      <h1 className="font-thin text-center">
+        <span className="text-white text-3xl text-center">
+          AI-Video Interview Setup
+        </span>
       </h1>
 
       <div className="flex items-center space-x-4">
@@ -291,10 +293,10 @@ export function InterviewSetupForm({
               <div
                 className={`w-8 h-8 rounded-full flex items-center justify-center border-2 cursor-pointer ${
                   steps === step
-                    ? "bg-[#E7ECFF] text-[#3B64F6] border-[#3B64F6]"
+                    ? "bg-[#E7ECFF] text-[#000] border-[#FFF]"
                     : steps > step
-                    ? "bg-[#3B64F6] text-white border-[#3B64F6]"
-                    : "border-[#E2E8F0] text-gray-400"
+                      ? "bg-[#FFF] text-black border-[#FFF]"
+                      : "border-[#E2E8F0] text-white"
                 }`}
                 onClick={() => {
                   if (steps > step) setSteps(step);
@@ -305,7 +307,7 @@ export function InterviewSetupForm({
               {step < (formData.interviewCategory === "HR" ? 2 : 3) && (
                 <div
                   className={`h-0.5 w-12 ${
-                    steps > step ? "bg-[#3B64F6]" : "bg-[#E2E8F0]"
+                    steps > step ? "bg-[#FFF]" : "bg-[#E2E8F0]"
                   }`}
                 />
               )}
@@ -316,7 +318,7 @@ export function InterviewSetupForm({
 
       <Card className="w-full sm:w-md z-10">
         <CardHeader>
-          <CardTitle className="text-sm sm:text-base text-[#4F637E] text-center font-normal">
+          <CardTitle className="text-sm sm:text-base text-[#4F637E] text-center font-thin">
             {steps === 1 &&
               "Tell us which company you're targeting and the type of interview you're preparing for."}
             {steps === 2 &&
@@ -702,7 +704,7 @@ const RemainingLength = ({
   <span className={position}>
     {maxLength - currentLength}
     <Tooltip>
-      <TooltipTrigger className="h-3 w-3 text-xs bg-[#3B64F6] text-white rounded-full font-bold cursor-pointer">
+      <TooltipTrigger className="h-3 w-3 text-xs bg-[#000] text-white rounded-full font-bold cursor-pointer">
         i
       </TooltipTrigger>
       <TooltipContent>

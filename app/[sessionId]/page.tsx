@@ -114,9 +114,9 @@ export default function AIInterviewSystem() {
   }, []);
 
   return (
-    <div className="w-full flex-1 flex flex-col sm:block bg-[#F5F8FF] py-2 sm:pt-24 md:pt-24 px-3 xl:px-0">
+    <div className="w-full z-20 flex-1 flex flex-col sm:block bg-transparent py-2 pt-2">
       {/* progress bar for small screens */}
-      <div className=" p-1 sm:p-2 md:py-4 md:px-5 rounded-2xl bg-[#fff] flex md:hidden flex-row items-center gap-1 sm:gap-2 mb-2 h-fit">
+      <div className="z-20 p-1 sm:p-2 md:py-4 md:px-5 rounded-2xl bg-[#fff] flex md:hidden flex-row items-center gap-1 sm:gap-2 mb-2 h-fit">
         <Image
           src="/assets/svg/question.svg"
           alt="question_logo"
@@ -153,23 +153,24 @@ export default function AIInterviewSystem() {
       </div>
 
       {/* main screens with video */}
-      <div className="w-full xl:w-7xl h-full mx-auto flex flex-col md:grid-cols-[2fr_5fr] gap-2 lg:gap-4 md:grid ">
+      <div className="z-20 w-full xl:w-7xl h-full mx-auto flex flex-col md:grid-cols-[2fr_5fr] gap-2 lg:gap-4 md:grid ">
         {/* video screens */}
         <div className="hidden sm:flex gap-4 w-full sm:w-[80%] md:w-full h-fit mx-auto md:mx-0">
           <VideoCall />
         </div>
 
         {/* chat screens */}
-        <div className="flex-1 md:h-[85vh] rounded-3xl overflow-hidden bg-[#FFFFFF] border sborder-[#E2E8F0] hidden sm:flex flex-col pb-2 sm:pb-0">
+        <div className=" z-20 flex-1 md:h-[85vh] rounded-3xl overflow-hidden bg-[#FFFFFF] border sborder-[#E2E8F0] hidden sm:flex flex-col pb-2 sm:pb-0">
           {/* progress bar for larger screens */}
           <div className="py-4 px-5 m-2 rounded-tl-2xl rounded-tr-2xl bg-[#F7F9FC] hidden md:flex flex-row items-center gap-2 ">
-            <Image
+            {/* <Image
               src="/assets/svg/question.svg"
               alt="question_logo"
               width={20}
               height={20}
-            />
-            <p className="text-xl font-medium">Question</p>
+              className="text-black"
+            /> */}
+            <p className="text-xl font-thin">Question</p>
 
             <div className="flex-1 flex items-center justify-between gap-2 px-1.5">
               {[...Array(maxQuestions)].map((_, index) => (
@@ -202,7 +203,7 @@ export default function AIInterviewSystem() {
           <div className="w-full h-[1px] bg-[#E2E8F0] hidden md:block" />
 
           {/* conversation display */}
-          <div className="flex-1 max-h-[60vh] sm:max-h-[49vh] md:max-h-full overflow-y-scroll px-2 sm:px-6 ">
+          <div className="flex-1 max-h-[60vh] sm:max-h-[49vh] md:max-h-full overflow-y-scroll px-2 sm:px-6  ">
             <div className="flex flex-col sm:space-y-4">
               {conversation.map((message, index) => {
                 const isLastMessage = index === conversation.length - 1;
@@ -234,7 +235,7 @@ export default function AIInterviewSystem() {
                             height={24}
                             className="sm:w-6 sm:h-6 w-4 h-4"
                           />
-                          <p className="text-sm sm:text-base font-semibold">
+                          <p className="text-sm  text-black sm:text-base font-semibold">
                             AI Interviewer
                           </p>
 
@@ -253,7 +254,7 @@ export default function AIInterviewSystem() {
                                     height={16}
                                     className="sm:w-4 sm:h-4 w-3 h-3 z-10"
                                   />
-                                  <div className="absolute sm:w-6 sm:h-6 w-4 h-4 bg-[#3B64F6] opacity-50 rounded-full animate-ping duration-300" />
+                                  <div className="absolute sm:w-6 sm:h-6 w-4 h-4 bg-[#000] text-white opacity-50 rounded-full animate-ping duration-300" />
                                 </div>
                                 <span>Skip Audio</span>
                               </Button>
@@ -281,7 +282,7 @@ export default function AIInterviewSystem() {
                       )}
 
                       <p
-                        className={`px-3 py-2 sm:p-6  border  rounded-2xl text-sm font-normal sm:font-medium ${
+                        className={`px-3 py-2 sm:p-6  border text-black rounded-2xl text-sm font-normal sm:font-medium ${
                           message.role === "ai"
                             ? "border-[#8692A633]"
                             : "border-[#F4F3FF] bg-[#E2E8FF]"
@@ -310,7 +311,8 @@ export default function AIInterviewSystem() {
                 speakTextWithTTS={speakTextWithTTS}
                 isLatestFeedback={
                   conversation.length > 0
-                    ? conversation[conversation.length - 1]?.isFeedback ?? false
+                    ? (conversation[conversation.length - 1]?.isFeedback ??
+                      false)
                     : false
                 }
                 textResponse={textResponse}
@@ -431,7 +433,7 @@ export default function AIInterviewSystem() {
                                         height={16}
                                         className="sm:w-4 sm:h-4 w-3 h-3 z-10"
                                       />
-                                      <div className="absolute sm:w-6 sm:h-6 w-4 h-4 bg-[#3B64F6] opacity-50 rounded-full animate-ping duration-300" />
+                                      <div className="absolute sm:w-6 sm:h-6 w-4 h-4 bg-[#000] text-white opacity-50 rounded-full animate-ping duration-300" />
                                     </div>
                                     <span>Skip Audio</span>
                                   </Button>
@@ -488,8 +490,8 @@ export default function AIInterviewSystem() {
                     speakTextWithTTS={speakTextWithTTS}
                     isLatestFeedback={
                       conversation.length > 0
-                        ? conversation[conversation.length - 1]?.isFeedback ??
-                          false
+                        ? (conversation[conversation.length - 1]?.isFeedback ??
+                          false)
                         : false
                     }
                     textResponse={textResponse}
@@ -514,7 +516,7 @@ export default function AIInterviewSystem() {
               speakTextWithTTS={speakTextWithTTS}
               isLatestFeedback={
                 conversation.length > 0
-                  ? conversation[conversation.length - 1]?.isFeedback ?? false
+                  ? (conversation[conversation.length - 1]?.isFeedback ?? false)
                   : false
               }
               textResponse={textResponse}

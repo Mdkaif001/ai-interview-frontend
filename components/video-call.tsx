@@ -131,23 +131,10 @@ export function VideoCall() {
         </div>
       </Card>
 
-      <Card className="overflow-hidden bg-gradient-to-b from-blue-900 to-indigo-900 relative w-full aspect-[4/3]">
-        <Image
-          src="/assets/images/interviewerBg.png"
-          className="w-full h-full inset-0 absolute object-cover"
-          alt="Interviewer Background"
-          width={200}
-          height={200}
-        />
+      <Card className="overflow-hidden bg-black relative w-full flex jusstify-center items-center aspect-[4/3]">
         <div className="absolute inset-0 flex flex-col gap-4 sm:gap-8 items-center justify-center">
-          <div className="relative w-full flex items-center justify-center">
-            <Image
-              src="/AI-Interviewer.png"
-              alt="User Avatar"
-              width={100}
-              height={100}
-              className="w-20 h-20 rounded-full bg-white z-10"
-            />
+          <div className="relative w-full flex items-center justify-center mt-10">
+            <div className="w-20 h-20 rounded-full bg-white z-10"></div>
             <Image
               src="/assets/svg/voicePulse.svg"
               alt="pulse"

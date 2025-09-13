@@ -31,9 +31,6 @@ export const downloadFeedbackPdf = async (
     });
   };
 
-  const logoBase64 = await loadImageAsBase64(
-    ""
-  );
 
   const colors = {
     primary: [59, 100, 246],
@@ -79,7 +76,6 @@ export const downloadFeedbackPdf = async (
   pdf.setTextColor(...(colors.primary as [number, number, number]));
   pdf.setFont("helvetica", "bold");
   pdf.text("Interview Feedback Summary", margin, yPos);
-  pdf.addImage(logoBase64, "PNG", 510, 10, 70, 20);
   yPos += 35;
 
   // Interview Setup

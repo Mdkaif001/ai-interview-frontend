@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import { Toaster } from "@/components/ui/sonner";
+import ShaderBackground from "@/components/shader-background";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,12 +17,12 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "AI Interview Model",
-  description: "Development of AI Interview Model by Adib Khan",
+  description: "Development of AI Interview Model by Mohammad Kaif",
   icons: {
     apple: "/apple-touch-icon.png",
     icon: [
-      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
-      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon_lgog.jpg", sizes: "32x32", type: "image/jpg" },
+      { url: "/favicon_lgog.jpg", sizes: "16x16", type: "image/jpg" },
     ],
     shortcut: "/favicon.ico",
     other: [{ rel: "manifest", url: "/site.webmanifest" }],
@@ -30,19 +31,23 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased h-screen w-screen flex flex-col 
-        
-        `}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased !font-thin`}
       >
-        <Header />
-        <main className="flex-1 flex flex-col">{children}</main>
-        <Toaster />
+        <ShaderBackground>
+          <Header />
+
+          <main className="h-[calc(100vh-80px)] overflow-y-auto mt-20">
+            {children}
+          </main>
+
+          <Toaster />
+        </ShaderBackground>
       </body>
     </html>
   );

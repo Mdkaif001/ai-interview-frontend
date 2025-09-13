@@ -90,15 +90,8 @@ export default function AIInterviewSetup() {
   };
 
   return (
-    <div className="relative h-full bg-white flex justify-center">
+    <div className="z-20 h-full flex justify-center overflow-auto">
       <InterviewSetupForm onSubmit={handleSetupSubmit} loading={loading} />
-      <Image
-        src="/assets/svg/wave.svg"
-        alt="Wave SVG"
-        width={100}
-        height={100}
-        className="absolute left-0 right-0 bottom-0 w-full z-0 h-44 md:h-fit object-cover"
-      />
     </div>
   );
 }

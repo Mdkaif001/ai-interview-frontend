@@ -149,7 +149,7 @@ export function ResponseInput({
             <Button
               onClick={handleReviseQuestion}
               disabled={isAISpeaking || loading}
-              className="bg-[#3B64F6] cursor-pointer h-fit py-1 px-2 text-sm sm:text-base"
+              className="bg-[#746b89] cursor-pointer h-fit py-1 px-4 text-sm sm:text-base font-bold"
             >
               Yes
             </Button>
@@ -163,8 +163,8 @@ export function ResponseInput({
               }}
               disabled={isAISpeaking || loading}
               className={`${
-                maxQuestions === questionCount ? "bg-green-500" : "bg-[#C51E1E]"
-              } cursor-pointer h-fit py-1 px-2 text-sm sm:text-base`}
+                maxQuestions === questionCount ? "bg-green-400" : "bg-red-400"
+              } cursor-pointer h-fit py-1 px-4 text-sm sm:text-base font-bold`}
             >
               {maxQuestions === questionCount ? "Get Assessment!" : "No"}
             </Button>
@@ -178,15 +178,15 @@ export function ResponseInput({
                 isAISpeaking
                   ? "AI is speaking..."
                   : isRecording
-                  ? "Listening..."
-                  : isTranscribing
-                  ? "Transcribing..."
-                  : "Type your response here..."
+                    ? "Listening..."
+                    : isTranscribing
+                      ? "Transcribing..."
+                      : "Type your response here..."
               }
               ref={inputRef}
               value={textResponse}
               onChange={(e) => setTextResponse(e.target.value)}
-              onPaste={(e) => e.preventDefault()}
+              // onPaste={(e) => e.preventDefault()}
               minLength={minAnswerLength}
               maxLength={maxAnswerLength}
               rows={1}
@@ -201,16 +201,16 @@ export function ResponseInput({
               onClick={isRecording ? handleStopRecording : handleStartRecording}
               variant="outline"
               disabled={isAISpeaking || isWaiting || isTranscribing}
-              className="rounded-full cursor-pointer h-fit p-2 py-3 sm:py-1 sm:px-2 self-end mb-1 sm:mb-2"
+              className="rounded-full cursor-pointer h-fit p-2 py-3 sm:py-1 sm:px-2 self-end mb-1 sm:mb-2 text-black"
             >
               {isRecording ? (
-                <Pause size={16} color="#3B64F6" />
+                <Pause size={16} color="#000" className="font-thin" />
               ) : isTranscribing ? (
-                <Loader className="w-4 h-4 animate-spin" />
+                <Loader className="w-4 h-4 animate-spin text-black" />
               ) : (
-                <Mic size={16} color="#3B64F6" />
+                <Mic size={16} color="#000" className="font-thin" />
               )}
-              <p className="text-sm font-medium text-[#3B64F6] hidden md:flex">
+              <p className="text-sm font-thin text-[#000] hidden md:flex">
                 {isRecording ? "Listening..." : "Voice"}
               </p>
             </Button>
@@ -224,7 +224,7 @@ export function ResponseInput({
                 !textResponse?.trim() ||
                 textResponse?.length < minAnswerLength
               }
-              className="w-12 h-12 rounded-none cursor-pointer bg-[#3B64F6] self-end rounded-tr-2xl"
+              className="w-12 h-12 rounded-none cursor-pointer bg-[#000] self-end rounded-tr-2xl"
             >
               <Image
                 src="/assets/svg/send.svg"

@@ -136,7 +136,7 @@ export async function getSkills({
     },
     body: JSON.stringify({ domain, jobRole }),
   });
-
+  
   if (!response.ok) throw new Error("Failed to submit final interview");
 
   return response.json();

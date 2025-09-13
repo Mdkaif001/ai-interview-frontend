@@ -16,6 +16,7 @@ import Image from "next/image";
 import { ConfirmDialog } from "../ConfirmDialog";
 import Lottie from "lottie-react";
 import feedbackLoading from "@/public/assets/lottie/feedback-loading.json";
+import { Button } from "@/components/ui/button";
 
 function FinalAssessment() {
   const router = useRouter();
@@ -114,8 +115,8 @@ function FinalAssessment() {
   }
 
   return (
-    <div className="bg-[#F5F8FF] flex flex-col items-center w-screen pt-4 sm:pt-32 p-2">
-      <div className="max-w-4xl mx-auto space-y-6">
+    <div className="bg-transparent z-20 flex flex-col items-center w-screen p-2 pt-2 overflow-auto h-full">
+      <div className="max-w-4xl z-20 mx-auto space-y-6">
         <div className="flex flex-col sm:flex-row gap-4 items-center sm:justify-between">
           <div className="flex  items-center space-x-2">
             <Image
@@ -124,11 +125,13 @@ function FinalAssessment() {
               width={32}
               height={32}
             />
-            <h1 className="text-xl sm:text-3xl">Interview Assessment</h1>
+            <h1 className="text-xl sm:text-3xl text-white">
+              Interview Assessment
+            </h1>
           </div>
           <div className="flex items-center space-x-2">
             <CircleCheck className="w-6 h-6 text-white fill-[#47B881]" />
-            <h1 className="text-base sm:text-xl font-medium">
+            <h1 className="text-base sm:text-xl font-medium text-white">
               Progress: Question {questionCount} of {maxQuestions}
             </h1>
           </div>
@@ -140,7 +143,7 @@ function FinalAssessment() {
               <span className="text-[#2E2E2E] text-sm sm:text-base">
                 Overall Score:{" "}
               </span>
-              <span className="text-[#3B64F6] text-sm sm:text-base">
+              <span className="text-[#000] text-sm sm:text-base">
                 {overallFeedback?.overall_score}/100%
               </span>
             </p>
@@ -155,7 +158,7 @@ function FinalAssessment() {
           <div className="bg-[#F7F9FC] rounded-2xl px-4 mt-2 sm:mt-9 mb-2 sm:mb-6">
             <p className="text-sm sm:text-lg font-bold leading-relaxed text-[#4A5A75]">
               Summary:{" "}
-              <span className="text-sm sm:text-base font-medium leading-relaxed text-[#4A5A75]">
+              <span className="text-sm sm:text-base font-medium leading-relaxed text-[#000]">
                 {overallFeedback?.summary}
               </span>
             </p>
@@ -164,19 +167,19 @@ function FinalAssessment() {
           <div className="px-4 space-y-2 sm:space-y-4">
             <p className="text-sm sm:text-base font-medium leading-relaxed text-[#2E2E2E]">
               💡 Clarity of Motivation:{" "}
-              <span className="text-[#3B64F6] text-sm sm:text-base">
+              <span className="text-[#FFF] text-sm sm:text-base">
                 {overallFeedback?.coaching_scores?.clarity_of_motivation}/5
               </span>
             </p>
             <p className="text-sm sm:text-base font-medium leading-relaxed text-[#2E2E2E]">
               🎯 Career Goal Alignment:{" "}
-              <span className="text-[#3B64F6] text-sm sm:text-base">
+              <span className="text-[#FFF] text-sm sm:text-base">
                 {overallFeedback?.coaching_scores?.career_goal_alignment}/5
               </span>
             </p>
             <p className="text-sm sm:text-base font-medium leading-relaxed text-[#2E2E2E]">
               📖 Specificity of Learning:{" "}
-              <span className="text-[#3B64F6] text-sm sm:text-base">
+              <span className="text-[#FFF] text-sm sm:text-base">
                 {overallFeedback?.coaching_scores?.specificity_of_learning}/5
               </span>
             </p>
@@ -260,7 +263,7 @@ function FinalAssessment() {
                         )}
                         <div className="flex items-start space-x-3">
                           <div className="flex items-start space-x-3 bg-[#E0ECFD] px-3.5 py-1.5 rounded-full">
-                            <p className="text-sm leading-relaxed text-[#3B64F6]">
+                            <p className="text-sm leading-relaxed text-[#000]">
                               <span className="text-[#2E2E2E] font-semibold">
                                 📊 Score:{" "}
                               </span>
@@ -268,7 +271,7 @@ function FinalAssessment() {
                             </p>
                           </div>
                           <div className="flex items-start space-x-3 bg-[#E0ECFD] px-3.5 py-1.5 rounded-full">
-                            <p className="text-sm leading-relaxed text-[#3B64F6]">
+                            <p className="text-sm leading-relaxed text-[#000]">
                               <span className="text-[#2E2E2E] font-semibold">
                                 🎓 Depth:{" "}
                               </span>
@@ -294,19 +297,21 @@ function FinalAssessment() {
           </div>
         </div>
       </div>
-      <div className="max-w-4xl mx-auto w-full py-3 my-2 flex justify-between space-x-6 ">
-        <button
+      <div className="z-20 max-w-4xl mx-auto w-full py-3 my-2 flex justify-between space-x-6 ">
+        <Button
           onClick={handleDownload}
-          className="py-2 w-full bg-white hover:text-[#3B57F6] text-[#3B64F6] rounded-md cursor-pointer border border-[#3B64F6]"
+          // variant={"outline"}
+          className="py-4 px-2 w-[48%] font-medium text-lg"
         >
           Download Report
-        </button>
-        <button
+        </Button>
+        <Button
           onClick={startNewInterview}
-          className="py-2 w-full bg-[#3B64F6] hover:bg-[#3B57F6] text-white rounded-md cursor-pointer"
+          // variant={"outline"}
+          className="py-4 px-2 w-[48%] font-medium text-lg"
         >
           Start New Interview
-        </button>
+        </Button>
       </div>
       <ConfirmDialog openDialogue={openDialog} setOpenDialog={setOpenDialog} />
     </div>
