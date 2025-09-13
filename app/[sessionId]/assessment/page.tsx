@@ -97,19 +97,8 @@ function FinalAssessment() {
 
   if (loading) {
     return (
-      <div className="bg-[#F5F8FF] flex flex-col items-center h-full w-screen pt-32">
-        <Lottie
-          animationData={feedbackLoading}
-          loop
-          autoplay
-          className="w-[480px] h-[480px]"
-        />
-        <p className="text-sm sm:text-base font-medium leading-relaxed text-[#4A5A75]">
-          Generating your final assessment...
-        </p>
-        <p className="text-sm sm:text-base font-medium leading-relaxed text-[#4A5A75]">
-          please wait a few seconds.
-        </p>
+      <div className="z-50 flex flex-col items-center h-screen justify-center -mt-10 text-3xl text-white prose prose-lg prose-headings:font-semibold prose-p:mt-0">
+        <h1 className="z-20">Generating Feedback...</h1>
       </div>
     );
   }
